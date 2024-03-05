@@ -1,0 +1,91 @@
+<div class="container" style="padding: 50px; background-color: #0e1317;">
+  <form #reservations1="ngForm" (ngSubmit)="suivant()">
+    <h4>Vous réservez en tant qu'invité.</h4><p>Connexion/Inscription</p>
+    <div *ngIf="page == false" class="col">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom"
+            required
+            pattern="^[a-zA-Z0-9àéèç]{1,25}$"
+            [(ngModel)]="reservation.nom" name="nom"
+            #nomV="ngModel">
+       <div [hidden]="nomV.valid || nomV.pristine"
+            class="card-panel red accent-1">
+            Le nom du client est requis (1-25)
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tel">Téléphone</label>
+        <input type="text" class="form-control" id="tel"
+            required
+            pattern="^[0-9]{10,12}$"
+            [(ngModel)]="reservation.num" name="tel"
+            #telV="ngModel">
+       <div [hidden]="telV.valid || telV.pristine"
+            class="card-panel red accent-1">
+            Le numéro de téléphone est incorrect
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mail">Email</label>
+        <input type="email" class="form-control" id="mail"
+            required
+            pattern="^[a-zA-Z0-9@.]{1,25}$"
+            [(ngModel)]="reservation.email" name="mail"
+            #mailV="ngModel">
+      <div [hidden]="mailV.valid || mailV.pristine"
+            class="card-panel red accent-1">
+            Email incorrect
+      </div>
+    </div>
+    <button [disabled]="!reservations1.form.valid" class="waves-effect waves-light right btn">Suivant</button>
+
+  </div>
+  </form>
+
+  <form #reservations2="ngForm" *ngIf="page == true" (ngSubmit)="validerReservation()">
+  <div class="row">
+    <div class="form-group col s6">
+      <label for="partySize">Nombre de couverts:</label>
+      <select #timeSelect name="partySize" [(ngModel)]="reservation.nbrPersonne" required>
+        <option value="" disabled selected>Nombres de couverts</option>
+        <option *ngFor="let size of partySizes" [value]="size">{{ size }}</option>
+      </select>
+    </div>
+
+    <div class="form-group col s6">
+      <label for="date">Date:</label>
+      <input #dateSelect type="text" class="datepicker" id="datepicker" name="datepicker" [(ngModel)]="reservation.datestr" required>
+    </div>
+    <div class="form-group" *ngIf="timesMidi.length != 0">
+      <p>Horraires midi</p>
+      <div name="heureM" *ngFor="let h of timesMidi" class="col s2">
+        <p>{{h}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <p>Horraires soir</p>
+      <div name="heureS" *ngFor="let h of timesSoir" class="col s2">
+        <p>{{h}}</p>
+      </div>
+    </div>
+    <button (click)="retour()" class="waves-effect waves-light btn">Retour</button>
+    <button type="submit" [disabled]="!reservations2.form.valid" class="waves-effect waves-light btn">Réserver</button>
+  </div>
+  <!--<div class="form-group">
+    <label for="time">Horraires:</label>
+    <select #timeSelect type="text" name="time" id="time" [(ngModel)]="reservation.heure" #horrairev="ngModel">
+        <optgroup *ngIf="timesMidi.length != 0" label="Midi :">
+          <option *ngFor="let timeMidi of timesMidi" value="{{timeMidi}}" class="blue">{{ timeMidi }}</option>
+        </optgroup>
+        <optgroup label="Soir :">
+          <option *ngFor="let timeSoir of timesSoir" value="{{timeSoir}}">{{ timeSoir }}</option>
+        </optgroup>
+    </select>
+    <div [hidden]="horrairev.valid || horrairev.pristine"
+        class="card-panel red accent-1">
+        Veuillez choisir un horraire 
+    </div>
+  </div>-->
+  </form>
+</div>

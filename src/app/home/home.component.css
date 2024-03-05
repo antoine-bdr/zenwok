@@ -1,0 +1,126 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.full-screen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%) grayscale(20%);
+}
+
+mat-toolbar {
+  position: absolute;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.text-overlay {
+  position: absolute;
+  padding: 5%;
+  width: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #f4e5e0;
+}
+
+.text-overlay button {
+  margin-top: 50px;
+}
+
+.icon-container {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+  
+.icon-container i {
+  font-size: 36px;
+  color: #f4e5e0;
+}
+
+
+#target {
+  height: 500px;
+  margin: 50px;
+}
+
+.description {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px;
+  
+}
+
+video {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.carousel {
+  width: 95%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel img {
+  width: 400px;
+  height: 300px;
+  margin: 5px;
+  object-fit: cover;
+  
+}
+
+.prev {
+  left: -20px;
+}
+
+.next {
+  right: -20px;
+}
+
+.rowcontact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.infos {
+  width: 100%;
+  text-align: center;
+}
+
+.card-panel {
+  background-color: #0d1115;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card-panel mat-icon {
+  color: #F5D100;
+}

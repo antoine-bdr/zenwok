@@ -1,0 +1,110 @@
+<!--<mat-card class="z-depth-3">
+  <mat-card-header>
+      <mat-card-title>Panier</mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="panier.length == 0">
+      <h5 class="center">Votre panier est vide</h5>
+  </mat-card-content>
+  <mat-card-content class="scrollable" *ngIf="panier.length > 0">
+      <mat-list>
+          <mat-list-item *ngFor="let p of panier">
+              <h4 mat-line> {{p.nom}}</h4>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div>
+                      <button mat-icon-button (click)="retirerPanier(p.nom)"><mat-icon>remove_circle_outline</mat-icon></button>
+                      {{p.quantite}}
+                      <button mat-icon-button (click)="ajoutQuantite(p)"><mat-icon>add_circle_outline</mat-icon></button>
+                  </div>
+                  <div>
+                      {{p.prix * p.quantite}}€
+                  </div>
+              </div>
+          </mat-list-item>
+      </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+      <mat-radio-group [(ngModel)]="type" (change)="changerTypeLivraison()">
+          <mat-radio-button value="true">Emporté</mat-radio-button>
+          <mat-radio-button value="false">Livraison</mat-radio-button>
+      </mat-radio-group>
+      <div fxFlex></div>
+      <div>Total: {{prix}}€</div>
+  </mat-card-actions>
+  <mat-card-actions *ngIf="panier.length != 0" align="end">
+      <button mat-raised-button color="primary" routerLink="/authentification" style="width: 100%;">Commander</button>
+  </mat-card-actions>
+</mat-card>-->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2 *ngIf="etape == 1" style="color: white;">Panier</h2>
+      <h2 *ngIf="etape == 2" style="color: white;">Récapitulatif</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="scrollable">
+    <mat-list>
+      <div *ngFor="let p of panier">
+        <mat-divider></mat-divider>
+        <mat-list-item style="height: 70px;">
+          <mat-grid-list cols="8" rowHeight="25">
+            <mat-grid-tile colspan="2" rowspan="2">
+              <img src="../../assets/menu/sushi/carré.png" alt="{{p.nom}}" class="item-thumbnail" style="width: 70px; height: 70px;">
+            </mat-grid-tile>
+            <mat-grid-tile colspan="6" rowspan="1">
+                <h4>{{p.nom}}</h4>
+                
+            </mat-grid-tile>
+            <mat-grid-tile colspan="4" rowspan="1">
+                <!--<button mat-icon-button (click)="retirerPanier(p.nom)">
+                  
+                </button>-->
+                <mat-icon (click)="retirerPanier(p.nom)">remove</mat-icon>
+                <p><span>{{p.quantite}}</span></p>
+                <mat-icon (click)="ajoutQuantite(p)">add</mat-icon>
+                <!--
+                <button mat-icon-button (click)="ajoutQuantite(p)" style="border: solid;">
+                  <mat-icon>add</mat-icon>
+                </button>-->
+  
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2" rowspan="1">
+              <p>{{p.prix * p.quantite}}€</p>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-list-item>
+      </div>
+    </mat-list>
+    <mat-divider></mat-divider>
+    
+  </mat-card-content>
+  <mat-grid-list cols="8" rowHeight="25">
+    <mat-grid-tile colspan="2">
+      <p>Type:</p>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <p> {{type}} </p>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <h3>Total:</h3>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <p>{{prix}}€</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+    <div *ngIf="etape == 1">
+      <mat-card-actions>
+        <mat-radio-group [(ngModel)]="type" (change)="changerTypeLivraison()">
+          <mat-radio-button value="Emporté">Emporté</mat-radio-button>
+          <mat-radio-button value="Livraison">Livraison</mat-radio-button>
+        </mat-radio-group>
+      </mat-card-actions>
+      <mat-card-actions *ngIf="panier.length != 0">
+        <button mat-raised-button color="primary" (click)="etape2()" routerLink="/authentification" style="width: 100%;">Suivant</button>
+        <!--<button mat-raised-button color="primary" (click)="goToPayment()">Acheter maintenant</button>-->
+      </mat-card-actions>
+    </div>
+</mat-card>

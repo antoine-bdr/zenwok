@@ -1,0 +1,90 @@
+<div class="form-container">
+    <div class="container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title><h3>Se connecter</h3></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Entrer votre email">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+      
+              <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" placeholder="Entrer votre mot de passe">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+      
+              <button mat-raised-button color="primary">Connexion</button>
+              <button mat-button>Inscription</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title><h3>S'inscrire</h3></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form>
+                <mat-card-actions>
+                    <mat-radio-group [(ngModel)]="profil.genre">
+                      <mat-radio-button value="false">M.</mat-radio-button>
+                      <mat-radio-button value="true">Mme.</mat-radio-button>
+                    </mat-radio-group>
+                  </mat-card-actions>
+              <mat-form-field appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input matInput style="border: solid; height: 10px;" [(ngModel)]="profil.nom" name="nom" placeholder="Entrer votre nom" required>
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Prénom</mat-label>
+                <input matInput [(ngModel)]="profil.prenom" name="prenom" placeholder="Entrer votre prenom" required>
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Téléphone</mat-label>
+                <input matInput [(ngModel)]="profil.tel" name="tel" placeholder="Entrer votre numéro de téléphone" required>
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="profil.email" name="email" placeholder="Entrer votre email" required>
+                <mat-icon matSuffix>mail</mat-icon>
+              </mat-form-field>
+      
+              <mat-form-field appearance="outline">
+                <mat-label>Adresse</mat-label>
+                <input matInput [hidden]="profil.adresse" type="text" id="adresse" name="adresse" class="autocomplete" [(ngModel)]="commande.adresse" name="adresse"  #adresseV="ngModel" placeholder="Entrer votre adresse" required>
+                <mat-icon matSuffix>home</mat-icon>
+              </mat-form-field>
+    <!--
+              <mat-grid-list cols="2" rowHeight="25" style="margin-bottom: 20px;">
+                <mat-grid-tile [class.selected]="commande.paiement === 'card'" (click)="commande.paiement = 'card'" colspan="1" rowspan="2">
+                  <mat-icon>credit_card</mat-icon>
+                  <p>CB</p>
+                </mat-grid-tile>
+                <mat-grid-tile [class.selected]="commande.paiement === 'cash'" (click)="commande.paiement = 'cash'" colspan="1" rowspan="2">
+                  <mat-icon>account_balance_wallet</mat-icon>
+                  <p>espèce</p>
+                </mat-grid-tile>
+            </mat-grid-list>-->
+                <mat-checkbox class="example-margin">Je souhaite recevoir les offres</mat-checkbox>
+              <button mat-raised-button (click)="validerCommande()" color="primary" style="width: 100%;">Créer mon compte</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="panier">
+        <app-panier></app-panier>
+      </div>
+      
+</div>

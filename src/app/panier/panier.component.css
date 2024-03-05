@@ -1,0 +1,47 @@
+mat-card{
+    background-color: #0e1317;
+}
+
+mat-card-header {
+    height: 40px;
+}
+
+mat-icon {
+    vertical-align: middle;
+    color: #fb8c00;
+}
+
+
+
+mat-radio-button.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #fb8c00;
+}
+
+mat-radio-button.mat-radio-checked .mat-radio-inner-circle {
+    background-color: #fb8c00;
+}
+
+.scrollable {
+    max-height: 225px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #fb8c00;
+}
+
+.mdc-list-item {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.item-thumbnail {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}

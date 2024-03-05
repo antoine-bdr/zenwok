@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .full-screen-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%) grayscale(20%);
+    border: solid;
+  }
+
+  .background-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: solid;
+  }
+
+  mat-toolbar {
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    border: solid;
+  }

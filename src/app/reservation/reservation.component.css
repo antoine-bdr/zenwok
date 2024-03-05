@@ -1,0 +1,11 @@
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid blue!important;
+}
+
+element.style {
+    color: blue;
+}
+
+option{
+    background-color: black;
+}

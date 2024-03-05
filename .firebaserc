@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "zenwok-f941c"
+  },
+  "targets": {
+    "zenwok-f941c": {
+      "hosting": {
+        "zenwok": [
+          "zenwok-f941c"
+        ]
+      }
+    }
+  }
+}

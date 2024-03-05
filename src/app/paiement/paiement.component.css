@@ -1,0 +1,7 @@
+.container {
+    align-items: center;
+    height: 50vh;
+    width: 800px;
+    margin: 50px;
+    background-color: white;
+  }

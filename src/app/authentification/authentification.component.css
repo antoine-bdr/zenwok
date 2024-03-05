@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    width: 300px;
+    margin: 20px;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  mat-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+
+  .mat-mdc-card{
+    background-color: #0e1317;
+  }
+
+  .mat-icon{
+    color: white;
+  }
+  
+  h3{
+    color: white;
+  }
+
+  .payment-options {
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  .selected {
+    border: 2px solid #fb8c00;
+    border-radius: 10px;
+}

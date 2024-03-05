@@ -1,0 +1,33 @@
+.footer {
+    background-color: #0d1115;
+    padding: 20px 0;
+  }
+  
+  .white-text {
+    color: #ffffff;
+  }
+  
+  .grey-text {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .text-lighten-4 {
+    color: rgba(255, 255, 255, 0.54);
+  }
+  
+  .footer-copyright {
+    background-color: rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    color: white;
+  }
+
+  li{
+    color: white;
+  }

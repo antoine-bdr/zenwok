@@ -1,0 +1,105 @@
+<mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+<button mat-raised-button color="primary" (click)="retourMenu()" routerLink="/menu" style="background-color: #0e1317;">
+    <mat-icon>arrow_back</mat-icon>Retour au menu
+  </button>
+
+<div class="form-container">
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h3>Se connecter</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form name="connexionForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="email" name="emailC" placeholder="Entrez votre email" required>
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput type="password" [(ngModel)]="passwordC" name="passwordC" placeholder="Entrez votre mot de passe" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        
+          <button mat-raised-button color="primary" (click)="connexion()">Connexion</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h3>S'inscrire</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form name="inscriptionForm">
+            <mat-card-actions>
+                <mat-radio-group name="genre" [(ngModel)]="profil.genre">
+                  <mat-radio-button value="false">M.</mat-radio-button>
+                  <mat-radio-button value="true">Mme.</mat-radio-button>
+                </mat-radio-group>
+              </mat-card-actions>
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput style="border: solid; height: 10px;" [(ngModel)]="profil.nom" name="nom" placeholder="Entrer votre nom" required>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+            <input matInput [(ngModel)]="profil.prenom" name="prenom" placeholder="Entrer votre prenom" required>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Téléphone</mat-label>
+            <input matInput [(ngModel)]="profil.tel" name="tel" placeholder="Entrer votre numéro de téléphone" required>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse</mat-label>
+            <input matInput [hidden]="profil.adresse" type="text" id="adresse" name="adresse" class="autocomplete" [(ngModel)]="commande.adresse" name="adresse"  #adresseV="ngModel" placeholder="Entrer votre adresse" required>
+            <mat-icon matSuffix>home</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="profil.email" name="email" placeholder="Entrer votre email" required>
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="motDePasse" placeholder="Entrer votre mot de passe" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmation du mot de passe</mat-label>
+            <input matInput type="password" [(ngModel)]="passwordConfirm" name="confirmMotDePasse" placeholder="Confirmer votre mot de passe" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+<!--
+          <mat-grid-list cols="2" rowHeight="25" style="margin-bottom: 20px;">
+            <mat-grid-tile [class.selected]="commande.paiement === 'card'" (click)="commande.paiement = 'card'" colspan="1" rowspan="2">
+              <mat-icon>credit_card</mat-icon>
+              <p>CB</p>
+            </mat-grid-tile>
+            <mat-grid-tile [class.selected]="commande.paiement === 'cash'" (click)="commande.paiement = 'cash'" colspan="1" rowspan="2">
+              <mat-icon>account_balance_wallet</mat-icon>
+              <p>espèce</p>
+            </mat-grid-tile>
+        </mat-grid-list>-->
+            <mat-checkbox name="offre" class="example-margin">Je souhaite recevoir les offres</mat-checkbox>
+          <button mat-raised-button (click)="inscription()" color="primary" style="width: 100%;">Créer mon compte</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="etape == 2" style="width: 300px; margin: 20px;">
+    <app-panier></app-panier>
+  </div>
+</div>

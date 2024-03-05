@@ -1,0 +1,92 @@
+<button mat-raised-button color="primary" routerLink="/home" style="background-color: #0e1317; margin-left: 2%;">
+  <mat-icon>arrow_back</mat-icon>Retour à l'accueil
+</button>
+<div class="container">
+  <div class="side-menu">
+    <mat-list>
+      <mat-list-item *ngFor="let c of categorie">
+        <a (click)="scrollMenu(c.id)">
+          <p>{{c.nom}}</p>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="main-container">
+    <div *ngFor="let c of categorie">
+      <h3 id="_{{c.id}}" style="text-align: center; color: white;">{{c.nom}}</h3>
+      <mat-grid-list cols="3" rowHeight="280px">
+        <div *ngFor="let m of menu">
+          <mat-grid-tile *ngIf="m.categorie == c.id">
+              <mat-card class="card">
+                <img mat-card-image src="../../assets/menu/sushi/testmenu.webp" alt="Photo de {{m.nom}}">
+                <mat-card-content>
+                  <mat-card-title><h4>{{m.nom}}</h4></mat-card-title>
+                  <mat-card-subtitle>{{m.description}}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-actions style="margin: 10px;">
+                  <h4>{{m.prix}}€</h4>
+                  <span class="spacer"></span>
+                  <!--<button mat-raised-button color="primary" (click)="ajoutPanier(m)">Ajouter</button>-->
+                  <button mat-mini-fab color="primary" (click)="ajoutPanier(m)" aria-label="Ajouter au panier">
+                    <mat-icon style="color: white;">add</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+          </mat-grid-tile>
+        </div>
+        
+      </mat-grid-list>
+    </div>
+  </div>
+  <div class="panier">
+    <app-panier></app-panier>
+  </div>
+</div>
+<!--
+<div class="container">
+  <button mat-raised-button color="primary" routerLink="/menu" style="background-color: #0e1317;">
+    <mat-icon>arrow_back</mat-icon>Retour à l'accueil
+  </button>
+  
+  <div class="side-menu">
+    <mat-list>
+      <mat-list-item *ngFor="let c of categorie">
+        <a (click)="scrollMenu(c.id)">
+          <p>{{c.nom}}</p>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  
+  <div fxLayout="row" fxLayoutAlign="center start" class="main-container">
+    <div fxFlex="100" style="margin-left: 15%; border: solid;">
+      <div *ngFor="let c of categorie">
+        <h3 id="_{{c.id}}" style="text-align: center; color: white;">{{c.nom}}</h3>
+        <mat-grid-list cols="3" rowHeight="280px">
+          <div *ngFor="let m of menu">
+            <mat-grid-tile *ngIf="m.categorie == c.id">
+                <mat-card class="card">
+                  <img mat-card-image src="../../assets/menu/sushi/testmenu.webp" alt="Photo de {{m.nom}}">
+                  <mat-card-content>
+                    <mat-card-title><h4>{{m.nom}}</h4></mat-card-title>
+                    <mat-card-subtitle>{{m.description}}</mat-card-subtitle>
+                  </mat-card-content>
+                  <mat-card-actions style="margin: 10px;">
+                    <h4>{{m.prix}}€</h4>
+                    <span class="spacer"></span>
+                    <button mat-mini-fab color="primary" (click)="ajoutPanier(m)" aria-label="Ajouter au panier">
+                      <mat-icon style="color: white;">add</mat-icon>
+                    </button>
+                  </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+          </div>
+          
+        </mat-grid-list>
+      </div>
+  
+  <div class="panier">
+    <app-panier></app-panier>
+  </div>
+</div>
+-->

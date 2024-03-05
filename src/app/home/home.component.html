@@ -1,0 +1,276 @@
+<div style="height: 100%;">
+    
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a href="#" mat-list-item>Menu Item 1</a>
+        <a href="#" mat-list-item>Menu Item 2</a>
+        <a href="#" mat-list-item>Menu Item 3</a>
+        <a href="#" mat-list-item>Menu Item 4</a>
+        <a href="#" mat-list-item>Menu Item 5</a>
+        <a href="#"mat-list-item>Menu Item 6</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: #0e1317;" fxFlexFill>
+      <!--Menu + image de fond-->
+      <div style="height: 100%;">
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span>LOGO</span>
+            <div fxShow="true" fxHide.lt-md>
+              <button mat-button routerLink="/menu">Commander</button>
+              <button mat-button routerLink="/menu">Réserver</button>
+            </div>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>phone</mat-icon>
+              </button>
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>facebook</mat-icon>
+              </button>
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>shopping_bag</mat-icon>
+              </button>
+              <button (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+              </button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <img src="assets/fond.svg" class="full-screen-image">
+        <div class="text-overlay">
+          <h1>Bienvenue dans votre Restaurant Wok Japonais à volonté !</h1>
+          <button mat-raised-button color="primary">Commander</button>
+        </div>
+        <div class="icon-container">
+          <a (click)="scrollPresentation()">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </a>
+        </div>
+      </div>
+      <!--Presentation + video-->
+      <div id="target" fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="50" class="description">
+          <h2>ZenWok</h2>
+          <h3>
+            Notre restaurant haut de gamme propose une cuisine japonaise rapide, saine et délicieuse dans un cadre élégant et relaxant. Nous offrons une cuisine à volonté avec une grande variété de plats japonais authentiques préparés avec des ingrédients frais de qualité supérieure. Notre équipe de professionnels passionnés de cuisine japonaise vous garantit une expérience culinaire inoubliable avec un service de qualité. Réservez votre table dès maintenant pour déguster notre cuisine japonaise exceptionnelle. Nous nous réjouissons de vous accueillir bientôt.
+          </h3>
+        </div>
+        <div fxFlex="50">
+          <video controls>
+            <source src="assets/video-presentation.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--Album-->
+      <div style="text-align: center;">
+        <h2>Album</h2>
+        <div class="carousel-container">
+          <button mat-icon-button (click)="slickModal.slickPrev()" class="arrow prev">
+            <mat-icon>navigate_before</mat-icon>
+          </button>
+          <ngx-slick-carousel class="carousel"
+                              #slickModal="slick-carousel"
+                              [config]="slideConfig"
+                              (init)="slickInit($event)"
+                              (breakpoint)="breakpoint($event)">
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+              <img src="{{ slide.img }}" alt="" width="100%">
+            </div>
+          </ngx-slick-carousel>
+          <button mat-icon-button (click)="slickModal.slickNext()" class="arrow next">
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" class="rowcontact">
+        <div fxFlex="50%" fxFlex.lt-md="100%">
+          <div class="infos">
+            <h2>Informations de contact</h2>
+            <p>Zac du Moulin, rue des Meuniers 59810 Lesquin</p>
+            <p>Lun-Sam: 12h à 14h30 - 19h00 à 22h00, Dim: Fermé</p>
+            <p>03 20 58 48 88 </p>
+            <a href="badges.html">
+              <mat-icon style="color: white;">facebook</mat-icon>
+            </a>
+          </div>
+        </div>
+        <div fxFlex="50%" fxFlex.lt-md="100%">
+          <app-map></app-map>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <h2 class="center-align">Avis clients</h2>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngFor="let review of reviews">
+          <div fxFlex="100" fxFlex.gt-xs="calc(100%/4)">
+            <mat-card class="card-panel">
+              <mat-card-title style="text-align: center;">{{ review.title }}</mat-card-title>
+              <mat-card-content>
+                <p style="text-align: center;">{{ review.content }}</p>
+                <p class="grey-text">{{ review.author }}
+                  <ng-container *ngFor="let rating of review.ratings">
+                    <mat-icon>{{ rating ? 'star' : 'star_border' }}</mat-icon>
+                  </ng-container>
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+<!--<img src="assets/fond.svg" class="full-screen-image">
+<div class="text-overlay">
+  <h1>Bienvenue dans votre Restaurant Wok Japonais à volonté !</h1>
+  <button mat-raised-button color="primary">Commander</button>
+</div>
+<div class="icon-container">
+  <a (click)="scrollPresentation()">
+    <i class="material-icons">keyboard_arrow_down</i>
+  </a>
+  
+</div>
+<div class="parallax-container">
+    <app-navigation></app-navigation>
+    <div class="parallax">
+      <img src="assets/fond.svg">
+        <div class="text-overlay">
+          <h1>Bienvenue dans votre Restaurant Wok Japonais à volonté !</h1>
+          <a class="waves-effect waves-light btn-large" style="background-color: #963f26!important;"><i class="material-icons right">directions_car</i>Commander</a>
+        </div>
+    </div>
+    <div class="icon-container">
+      <a (click)="scrollPresentation()">
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+      
+    </div>
+</div>
+<div id="target" class="row rowpresentation">
+  <div class="col s6">
+    <div class="presentation">
+      <h2>ZenWok</h2>
+      <h5>
+        Notre restaurant haut de gamme propose une cuisine japonaise rapide, saine et délicieuse dans un cadre élégant et relaxant. Nous offrons une cuisine à volonté avec une grande variété de plats japonais authentiques préparés avec des ingrédients frais de qualité supérieure. Notre équipe de professionnels passionnés de cuisine japonaise vous garantit une expérience culinaire inoubliable avec un service de qualité. Réservez votre table dès maintenant pour déguster notre cuisine japonaise exceptionnelle. Nous nous réjouissons de vous accueillir bientôt.
+      </h5>
+    </div>
+  </div>
+  <div class="col s6">
+    <video class="responsive-video" controls>
+      <source src="assets/video-presentation.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+<div>
+  <h2 style="text-align: center;">Album Photo</h2>
+</div>
+<div class="row rowcarousel">
+  <div class="col s1 chevron">
+    <a><i class="medium material-icons" style="color: #963f26;">chevron_left</i></a>
+  </div>
+  <div class="col s10 carousel">
+    <a class="carousel-item"><img src="assets/album/image1.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image2.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image3.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image4.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image5.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image6.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image7.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image8.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image9.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image10.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image11.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image12.jpg"></a>
+    <a class="carousel-item"><img src="assets/album/image13.jpg"></a>
+  </div>
+  <div class="col s1 chevron">
+    <a><i class="medium material-icons" style="color: #963f26;">chevron_right</i></a>
+  </div>
+</div>
+
+<div class="row rowcontact">
+  <div class="col l6 s12">
+    <div class="infos">
+      <h2>Informations de contact</h2>
+      <p>Zac du Moulin, rue des Meuniers 59810 Lesquin</p>
+      <p>Lun-Sam: 12h à 14h30 - 19h00 à 22h00, Dim: Fermé</p>
+      <p>03 20 58 48 88 </p>
+      <a href="badges.html"><i class="material-icons">facebook</i></a>
+    </div>
+  </div>
+  <div class="col l6 s12">
+    <app-map></app-map>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h2 class="center-align">Avis clients</h2>
+  </div>
+  <div class="col s12 m3 avis">
+    <div class="card-panel z-depth-3">
+      <h4>Super restaurant</h4>
+      <p>Le repas était excellent et le service impeccable. Nous reviendrons certainement !</p>
+      <p class="grey-text">- Marie L.
+        <i class="material-icons right">star_border</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+      </p>
+    </div>
+  </div>
+  <div class="col s12 m3">
+    <div class="card-panel z-depth-3">
+      <h4>Belle expérience culinaire</h4>
+      <p>Le chef a concocté un menu fabuleux, les vins étaient exceptionnels.</p>
+      <p class="grey-text">- Thomas R.
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+      </p>
+    </div>
+  </div>
+  <div class="col s12 m3">
+    <div class="card-panel z-depth-3">
+      <h4>Excellent service</h4>
+      <p>Le personnel était très sympathique et attentionné. Nous avons passé une soirée agréable.</p>
+      <p class="grey-text">- Julie M.
+        <i class="material-icons right">star_border</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+      </p>
+    </div>
+  </div>
+  <div class="col s12 m3">
+    <div class="card-panel z-depth-3">
+      <h4>Très bon rapport qualité-prix</h4>
+      <p>Les plats étaient excellents et les prix raisonnables. Nous avons apprécié notre dîner.</p>
+      <p class="grey-text">- Pierre D.
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+        <i class="material-icons right">star</i>
+      </p>
+    </div>
+  </div>
+</div>
+<div id="modal1" class="modal">
+  <app-reservation></app-reservation>
+</div>
+<app-footer></app-footer>-->

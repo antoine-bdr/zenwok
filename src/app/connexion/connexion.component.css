@@ -1,0 +1,23 @@
+.form-container {
+    border: solid;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 300px;
+    margin: 20px;
+  }
+
+  .panier{
+    width: 300px;
+  }
+
+  .mat-mdc-card{
+    background-color: #0e1317;
+  }
